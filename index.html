@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <title>{{company_name}} — العرض الفني</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Cairo:wght@400;600;700;900&display=swap"
+    rel="stylesheet">
+  <style>
+    /* =========================================================
+     FONTS
+     ========================================================= */
+    @font-face {
+      font-family: 'DIN Next LT Arabic';
+      src: url('DINNextLTArabic-Regular-3.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    /* =========================================================
+     DESIGN TOKENS
+     ========================================================= */
+    :root {
+      --navy-dark: #1c3f4d;
+      --navy-mid: #17495a;
+      --teal: #1f7a72;
+      --teal-light: #4fa89b;
+      --gold: #c9a876;
+      --gold-line: #d4b483;
+      --paper: #eef3f4;
+      --paper-2: #e4ebec;
+      --ink: #223034;
+      --ink-soft: #4a5a5e;
+      --white: #ffffff;
+
+      --font-display: 'DIN Next LT Arabic', 'Tajawal', sans-serif;
+      --font-body: 'DIN Next LT Arabic', 'Cairo', sans-serif;
+
+      --page-w: 297mm;
+      --page-h: 210mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      background: #7a8b8f;
+      font-family: var(--font-body);
+      color: var(--ink);
+    }
+
+    /* =========================================================
+     PAGE SHELL
+     ========================================================= */
+    .page {
+      position: relative;
+      width: var(--page-w);
+      height: var(--page-h);
+      margin: 10mm auto;
+      background: var(--paper);
+      overflow: hidden;
+      box-shadow: 0 1mm 6mm rgba(0, 0, 0, 0.25);
+      break-after: page;
+      page-break-after: always;
+    }
+
+    .page:last-child {
+      break-after: auto;
+      page-break-after: auto;
+    }
+
+    .page__footnote {
+      position: absolute;
+      left: 10mm;
+      bottom: 6mm;
+      display: flex;
+      gap: 1.5mm;
+      align-items: baseline;
+      font-size: 3mm;
+      color: var(--ink-soft);
+      direction: rtl;
+      z-index: 5;
+    }
+
+    .page__footnote strong {
+      color: var(--teal);
+      font-weight: 700;
+    }
+
+    /* =========================================================
+     PAGE 1 — COVER
+     ========================================================= */
+    .cover {
+      display: grid;
+      grid-template-columns: 1fr 100mm 6mm 42mm;
+      /* RTL: Content, Photos, Goldline, Sidebar */
+      grid-template-rows: 1fr 22mm;
+      height: 100%;
+    }
+
+    .cover__sidebar {
+      grid-column: 4;
+      grid-row: 1 / span 2;
+      background: var(--paper-2);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10mm 0 0 0;
+      position: relative;
+    }
+
+    .cover__logo-container {
+      background: var(--white);
+      border: 0.26mm solid #d0dcdc;
+      padding: 3mm;
+      width: 36mm;
+      height: 22mm;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cover__logo {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .cover__sidebar-teal-block {
+      background: var(--navy-mid);
+      width: 100%;
+      height: 22mm;
+    }
+
+    .cover__goldline {
+      grid-column: 3;
+      grid-row: 1 / span 2;
+      background: var(--gold-line);
+      width: 0.5mm;
+      justify-self: center;
+      height: 100%;
+    }
+
+    .cover__photos-grid {
+      grid-column: 2;
+      grid-row: 1;
+      display: grid;
+      grid-template-columns: 38mm 56mm;
+      /* Left secondary photo block, Right main photo */
+      gap: 6mm;
+      padding-top: 10mm;
+      padding-bottom: 4mm;
+    }
+
+    .cover__photos-left-col {
+      display: flex;
+      flex-direction: column;
+      gap: 6mm;
+      height: 100%;
+    }
+
+    .cover__photos-teal-block {
+      background: var(--navy-mid);
+      height: 75mm;
+      width: 100%;
+    }
+
+    .cover__photo-small-container {
+      background: var(--white);
+      border: 1.6mm solid var(--paper-2);
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .cover__photo-small {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(1);
+    }
+
+    .cover__photo-main-container {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cover__photo-main {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(1);
+    }
+
+    .cover__content {
+      grid-column: 1;
+      grid-row: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 10mm 0 16mm;
+      gap: 12mm;
+    }
+
+    .cover__title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 17mm;
+      line-height: 1.15;
+      color: var(--ink);
+    }
+
+    .cover__meta {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5mm;
+      font-size: 4mm;
+      color: var(--ink);
+      border-right: 0.5mm solid var(--gold-line);
+      padding-right: 3.7mm;
+      max-width: 120mm;
+      text-align: right;
+    }
+
+    .cover__meta p {
+      line-height: 1.5;
+    }
+
+    .cover__meta strong {
+      font-weight: 700;
+    }
+
+    .cover__bottom-bar {
+      grid-column: 1 / span 2;
+      grid-row: 2;
+      background: var(--navy-mid);
+    }
+
+    /* =========================================================
+     PAGE 2 — SECTION DIVIDER
+     ========================================================= */
+    .divider {
+      display: grid;
+      grid-template-columns: 1fr 90mm 6mm 42mm;
+      /* RTL: Content, Photo, Goldline, Sidebar */
+      grid-template-rows: 1fr 22mm;
+      height: 100%;
+    }
+
+    .divider__sidebar {
+      grid-column: 4;
+      grid-row: 1 / span 2;
+      background: var(--paper-2);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+    }
+
+    .divider__sidebar-teal-block {
+      background: var(--navy-mid);
+      width: 100%;
+      height: 22mm;
+    }
+
+    .divider__goldline {
+      grid-column: 3;
+      grid-row: 1 / span 2;
+      background: var(--gold-line);
+      width: 0.5mm;
+      justify-self: center;
+      height: 100%;
+    }
+
+    .divider__photo-container {
+      grid-column: 2;
+      grid-row: 1;
+      padding: 10mm 4mm 4mm 4mm;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .divider__photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(1);
+      border: 1.5mm solid var(--teal);
+      border-radius: 4mm;
+    }
+
+    .divider__content {
+      grid-column: 1;
+      grid-row: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 10mm 16mm 4mm 10mm;
+    }
+
+    .divider__brand {
+      align-self: flex-start;
+    }
+
+    .divider__logo-container {
+      background: var(--white);
+      border: 0.26mm solid #d0dcdc;
+      padding: 3mm;
+      width: 36mm;
+      height: 22mm;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .divider__logo {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .divider__text-box {
+      width: 100%;
+      text-align: right;
+      margin-bottom: 12mm;
+    }
+
+    .divider__title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 17mm;
+      line-height: 1.15;
+      color: var(--ink);
+    }
+
+    .divider__bottom-bar {
+      grid-column: 1 / span 2;
+      grid-row: 2;
+      background: var(--navy-mid);
+    }
+
+    /* =========================================================
+     PAGE 3 — TABLE OF CONTENTS
+     ========================================================= */
+    .toc {
+      position: relative;
+      height: 100%;
+      padding: 14mm 16mm 12mm;
+      background: var(--white);
+      overflow: hidden;
+    }
+
+    /* Faint Watermarks */
+    .toc::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 100mm;
+      background: url('images/watermark.png') no-repeat left center;
+      background-size: cover;
+      opacity: 0.12;
+      z-index: 0;
+      filter: grayscale(1);
+      transform: scaleX(-1);
+      pointer-events: none;
+    }
+
+    .toc::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      width: 100mm;
+      background: url('images/watermark.png') no-repeat right center;
+      background-size: cover;
+      opacity: 0.12;
+      z-index: 0;
+      filter: grayscale(1);
+      pointer-events: none;
+    }
+
+    .toc__corner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 70mm;
+      height: 22mm;
+      background: var(--teal);
+      clip-path: polygon(0 0, 100% 0, 78% 100%, 0% 100%);
+      z-index: 1;
+    }
+
+    .toc__corner-dots {
+      position: absolute;
+      top: 6mm;
+      left: 6mm;
+      display: grid;
+      grid-template-columns: repeat(5, 1.3mm);
+      gap: 1.3mm;
+      z-index: 2;
+    }
+
+    .toc__corner-dots span {
+      width: 0.8mm;
+      height: 0.8mm;
+      border-radius: 50%;
+      background: var(--ink-soft);
+      opacity: .4;
+    }
+
+    .toc__corner-br {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 60mm;
+      height: 20mm;
+      background: var(--teal);
+      clip-path: polygon(22% 0, 100% 0, 100% 100%, 0% 100%);
+      z-index: 1;
+    }
+
+    .toc__corner-dots-br {
+      position: absolute;
+      bottom: 6mm;
+      right: 6mm;
+      display: grid;
+      grid-template-columns: repeat(5, 1.3mm);
+      gap: 1.3mm;
+      z-index: 2;
+    }
+
+    .toc__corner-dots-br span {
+      width: 0.8mm;
+      height: 0.8mm;
+      border-radius: 50%;
+      background: var(--ink-soft);
+      opacity: .4;
+    }
+
+    .toc__heading {
+      text-align: center;
+      margin-bottom: 6mm;
+      position: relative;
+      z-index: 2;
+    }
+
+    .toc__heading h1 {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 9.5mm;
+      color: var(--teal);
+      margin-bottom: 2mm;
+    }
+
+    .toc__heading .rule {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2mm;
+      margin-top: 1.6mm;
+    }
+
+    .toc__heading .rule::before,
+    .toc__heading .rule::after {
+      content: "";
+      height: 0.5mm;
+      width: 16mm;
+      background: var(--teal);
+    }
+
+    .toc__heading .rule .dots-center {
+      display: flex;
+      gap: 1.5mm;
+    }
+
+    .toc__heading .rule .dots-center span {
+      width: 1.2mm;
+      height: 1.2mm;
+      border-radius: 50%;
+      background: var(--teal);
+    }
+
+    .toc__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 14mm;
+      position: relative;
+      z-index: 2;
+    }
+
+    .toc__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .toc__item {
+      display: grid;
+      grid-template-columns: 1fr 8mm 9mm;
+      /* RTL: Label, Icon, Number */
+      align-items: center;
+      gap: 2.6mm;
+      padding: 2.2mm 1mm;
+      border-bottom: 0.26mm solid #e5eaea;
+    }
+
+    .toc__num {
+      font-weight: 700;
+      font-size: 4.8mm;
+      color: var(--teal);
+      text-align: center;
+      border-right: 0.26mm solid #cdd5d6;
+      padding-right: 2.5mm;
+      height: 5mm;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .toc__icon {
+      width: 8mm;
+      height: 8mm;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--teal);
+    }
+
+    .toc__icon svg {
+      width: 5.5mm;
+      height: 5.5mm;
+      stroke: var(--teal);
+    }
+
+    .toc__label {
+      font-size: 4mm;
+      font-weight: 500;
+      color: var(--ink);
+      text-align: right;
+    }
+
+    /* =========================================================
+     PRINT SETUP
+     ========================================================= */
+    @media print {
+
+      html,
+      body {
+        background: none;
+      }
+
+      .page {
+        margin: 0;
+        box-shadow: none;
+        width: 297mm;
+        height: 210mm;
+      }
+
+      @page {
+        size: A4 landscape;
+        margin: 0;
+      }
+    }
+
+    @media screen and (max-width: 1300px) {
+      .page {
+        transform: scale(0.8);
+        transform-origin: top center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= PAGE 1 — COVER ================= -->
+  <section class="page page--cover">
+    <div class="cover">
+      <!-- Left sidebar (Column 4 in RTL) -->
+      <div class="cover__sidebar">
+        <div class="cover__logo-container">
+          <img src="images/company-logo.png" alt="Company Logo" class="cover__logo">
+        </div>
+        <div class="cover__sidebar-teal-block"></div>
+      </div>
+
+      <!-- Gold Vertical line (Column 3 in RTL) -->
+      <div class="cover__goldline" aria-hidden="true"></div>
+
+      <!-- Photos (Column 2 in RTL) -->
+      <div class="cover__photos-grid" aria-hidden="true">
+        <div class="cover__photos-left-col">
+          <div class="cover__photos-teal-block"></div>
+          <div class="cover__photo-small-container">
+            <img src="images/cover-small.png" alt="" class="cover__photo-small">
+          </div>
+        </div>
+        <div class="cover__photo-main-container">
+          <img src="images/cover-main.png" alt="" class="cover__photo-main">
+        </div>
+      </div>
+
+      <!-- Content (Column 1 in RTL) -->
+      <div class="cover__content">
+        <h1 class="cover__title">العرض<br>الفني</h1>
+        <div class="cover__meta">
+          <p><strong>المنافسة /</strong> {{tender_title}}</p>
+          <p><strong>الجهه /</strong> {{client_entity}}</p>
+        </div>
+      </div>
+
+      <!-- Bottom horizontal bar (spans columns 1 to 2 in RTL) -->
+      <div class="cover__bottom-bar" aria-hidden="true"></div>
+    </div>
+
+    <!-- Footnote in margin -->
+    <div class="page__footnote">
+      <span><strong>ملاحظة/</strong> العرض ساري لمدة {{offer_validity_days}} يوم من التاريخ المحدد لتسليم العروض —
+        {{submission_deadline}}</span>
+    </div>
+  </section>
+
+  <!-- ================= PAGE 2 — SECTION DIVIDER ================= -->
+  <section class="page page--divider">
+    <div class="divider">
+      <!-- Left sidebar (Column 4 in RTL) -->
+      <div class="divider__sidebar">
+        <div class="divider__sidebar-teal-block"></div>
+      </div>
+
+      <!-- Gold Vertical line (Column 3 in RTL) -->
+      <div class="divider__goldline" aria-hidden="true"></div>
+
+      <!-- Photo (Column 2 in RTL) -->
+      <div class="divider__photo-container" aria-hidden="true">
+        <img src="images/divider-photo.png" alt="" class="divider__photo">
+      </div>
+
+      <!-- Content (Column 1 in RTL) -->
+      <div class="divider__content">
+        <div class="divider__brand">
+          <div class="divider__logo-container">
+            <img src="images/company-logo.png" alt="Company Logo" class="divider__logo">
+          </div>
+        </div>
+        <div class="divider__text-box">
+          <h1 class="divider__title">الملف<br>التعريفي</h1>
+        </div>
+      </div>
+
+      <!-- Bottom horizontal bar (spans columns 1 to 2 in RTL) -->
+      <div class="divider__bottom-bar" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ================= PAGE 3 — TABLE OF CONTENTS ================= -->
+  <section class="page page--toc">
+    <div class="toc">
+      <!-- Corner Accents -->
+      <div class="toc__corner" aria-hidden="true"></div>
+      <div class="toc__corner-dots" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+
+      <div class="toc__corner-br" aria-hidden="true"></div>
+      <div class="toc__corner-dots-br" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+
+      <!-- Title Header -->
+      <header class="toc__heading">
+        <h1>فهرس العرض الفني</h1>
+        <div class="rule">
+          <div class="dots-center">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Two Column Grid -->
+      <div class="toc__grid">
+        <!-- Right Column: items 01–12 -->
+        <ol class="toc__list toc__list--right" start="1">
+          <li class="toc__item">
+            <span class="toc__label">الملف التعريفي</span>
+            <span class="toc__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <circle cx="10" cy="13" r="2" />
+                <path d="M14 17a4 4 0 0 0-8 0" />
+              </svg>
+            </span>
+            <span class="toc__num">01</span>
+          </li>
+          <li class="toc__item">
+            <span class="toc__label">الملخص التنفيذي</span>
+            <span class="toc__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+                <polyline points="10 9 9 9 8 9" />
+              </svg>
+            </span>
+            <span class="toc__num">02</span>
+          </li>
+          <li class="toc__item">
+            <span class="toc__label">فهم نطاق العمل</span>
+            <span class="toc__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <circle cx="12" cy="12" r="6" />
+                <circle cx="12" cy="12" r="2" />
+              </svg>
+            </span>
+            <span class="toc__num">03</span>
+          </li>
+          <li class="toc__item">
+            <span class="toc__label">مراحل إدارة المشروع</span>
+            <span class="toc__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <polyline points="22 17 18 17 18 13 14 13 14 9 10 9 10 5 6 5 6 2" />
+                <path d="M2 22h20" />
+              </svg>
+            </span>
+            <span class="toc__num">04</span>
+          </li>
+          <li class="toc__item">
+            <span class="toc__label">منهجية العمل</span>
+            <span class="toc__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3" />
+                <path
+                  d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+              </svg>
+            </span>
+            <span class="toc__num">05</span>
+          </li>
+          <li class="toc__item">
+            <span class="toc__label">إدارة المخاطر</span>
+            <span class="toc__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                <line x1="12" y1="9" x2="12" y2="13" />
+                <line x1="12" y1="17" x2="12.01" y2="17" />
+              </svg>
+            </span>
+            <span class="toc__num">06</span>
+          </li>
+          <li class="toc__item">
+            <span class="toc__label">إدارة الجودة</span>
+            <span class="toc__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <circle cx="12" cy="8" r="7" />
+                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+              </svg>
+            </span>
+            <span class="toc__num">07</span>
+          </li>
+          <li class="toc__item">
+            <span class="toc__label">خطة إدارة الجدول الزمني</span>
+            <span class="toc__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+              </svg>
+            </span>
+            <span class="toc__num">08</span>
+          </li>
+          <li class="toc__item">
+            <span class="toc__label">خطة إدارة التواصل</span>
+            <span class="toc__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+            </span>
+            <span class="toc__num">09</span>
+          </li>
+          <li class="toc__item">
+            <span class="toc__label">إدارة الدخول والتصاريح</span>
+            <span class="toc__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+                <polyline points="10 17 15 12 10 7" />
+                <line x1="15" y1="12" x2="3" y2="12" />
+              </svg>
+            </span>
+            <span class="toc__num">10</span>
+          </li>
+          <li class="toc__item">
+            <span class="toc__label">خطة الأمن والسلامة والصحة المهنية</span>
+            <span class="toc__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M2 12a10 10 0 0 1 20 0H2z" />
+                <path d="M5 12a7 7 0 0 1 14 0" />
+                <path d="M12 2v3" />
+                <path d="M12 12V5" />
+                <path d="M2 12c0 3 4 5 10 5s10-2 10-5" />
+              </svg>
+            </span>
+            <span class="toc__num">11</span>
+          </li>
+          <li class="toc__item">
+            <span class="toc__label">خطة الالتزام والمعالجة</span>
+            <span class="toc__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M9 11l3 3L22 4" />
+                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+              </svg>
+            </span>
+            <span class="toc__num">12</span>
+          </li>
+        </ol>
+
+        <!-- Left Column: items 13–23 -->
+        <ol class="toc__list toc__list--left" start="13">
+          <li class="toc__item">
+            <span class="toc__label">خطة التدريب والإشراف</span>
+            <span class="toc__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M2 3h20v14H2z" />
+                <path d="M8 21h8" />
+                <path d="M12 17v4" />
+                <circle cx="12" cy="10" r="2" />
+              </svg>
+            </span>
+            <span class="toc__num">13</span>
+          </li>
+          <li class="toc__item">
+            <span class="toc__label">خطة التعبئة والتجهيز</span>
+            <span class="toc__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <polyline points="21 8 21 21 3 21 3 8" />
+                <rect x="1" y="3" width="22" height="5" />
+                <line x1="10" y1="12" x2="14" y2="12" />
+              </svg>
+            </span>
+            <span class="toc__num">14</span>
+          </li>
+          <li class="toc__item">
+            <span class="toc__label">الالتزام بالمحتوى المحلي</span>
+            <span class="toc__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M12 22V10" stroke-width="3" />
+                <path d="M12 10C9 8 5 9 5 13C8 12 10 11 12 10Z" />
+                <path d="M12 10C15 8 19 9 19 13C16 12 14 11 12 10Z" />
+                <path d="M12 8C9 5 6 6 6 10C9 9 11 8 12 8Z" />
+                <path d="M12 8C15 5 18 6 18 10C15 9 13 8 12 8Z" />
+              </svg>
+            </span>
+            <span class="toc__num">15</span>
+          </li>
+          <li class="toc__item">
+            <span class="toc__label">خطة المعدات والآليات</span>
+            <span class="toc__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M2 18h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3L11 3H7L5 7H2a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2z" />
+                <circle cx="5" cy="18" r="2" />
+                <circle cx="15" cy="18" r="2" />
+                <path d="M16 11h5l3 3v2" />
+              </svg>
+            </span>
+            <span class="toc__num">16</span>
+          </li>
+          <li class="toc__item">
+            <span class="toc__label">مؤشرات الأداء والتقارير</span>
+            <span class="toc__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10" />
+                <line x1="12" y1="20" x2="12" y2="4" />
+                <line x1="6" y1="20" x2="6" y2="14" />
+              </svg>
+            </span>
+            <span class="toc__num">17</span>
+          </li>
+          <li class="toc__item">
+            <span class="toc__label">فريق العمل</span>
+            <span class="toc__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+            </span>
+            <span class="toc__num">18</span>
+          </li>
+          <li class="toc__item">
+            <span class="toc__label">الخبرات السابقة</span>
+            <span class="toc__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+              </svg>
+            </span>
+            <span class="toc__num">19</span>
+          </li>
+          <li class="toc__item">
+            <span class="toc__label">شهادة زيارة الموقع</span>
+            <span class="toc__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+                <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
+                <path d="M9 14h6" />
+                <path d="M9 18h4" />
+                <path d="M12 10h.01" />
+              </svg>
+            </span>
+            <span class="toc__num">20</span>
+          </li>
+          <li class="toc__item">
+            <span class="toc__label">السجلات الخاصة بنا</span>
+            <span class="toc__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+            </span>
+            <span class="toc__num">21</span>
+          </li>
+          <li class="toc__item">
+            <span class="toc__label">السجلات الخاصة بالمنافسة</span>
+            <span class="toc__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect x="4" y="2" width="16" height="20" rx="2" ry="2" />
+                <line x1="9" y1="22" x2="9" y2="16" />
+                <line x1="15" y1="22" x2="15" y2="16" />
+                <path d="M9 16h6" />
+                <path d="M8 6h.01" />
+                <path d="M16 6h.01" />
+                <path d="M8 10h.01" />
+                <path d="M16 10h.01" />
+              </svg>
+            </span>
+            <span class="toc__num">22</span>
+          </li>
+          <li class="toc__item">
+            <span class="toc__label">معلومات التواصل</span>
+            <span class="toc__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+            </span>
+            <span class="toc__num">23</span>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+</body>
+
+</html>
