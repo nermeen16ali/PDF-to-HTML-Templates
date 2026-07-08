@@ -97,10 +97,16 @@
 
     /* Cover footnote: below the bottom bar */
     .cover .page__footnote {
-      grid-column: 1 / -1;
-      grid-row: 3;
-      padding: 8mm 20mm;
-      text-align: end;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 16mm;
+      padding: 0 20mm;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      z-index: 5;
     }
 
     .cover .page__footnote strong {
@@ -111,22 +117,22 @@
      PAGE 1 — COVER
      ========================================================= */
     .cover {
-      display: grid;
-      grid-template-columns: 1fr 100mm 6mm 50mm;
-      /* RTL: Content, Photos, Goldline, Sidebar */
-      grid-template-rows: 1fr 26mm auto;
+      display: flex;
+      flex-direction: row-reverse;
+      position: relative;
       height: 100%;
     }
 
     .cover__sidebar {
-      grid-column: 4;
-      grid-row: 1 / span 2;
+      width: 50mm;
+      flex-shrink: 0;
+      padding-bottom: 16mm;
       background: var(--paper-2);
+      z-index: 3;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
-      padding: 15mm 0 0 0;
       position: relative;
     }
 
@@ -155,24 +161,33 @@
       height: 26mm;
     }
 
+    .sidebar_top_part {
+      position: relative;
+      height: 100%;
+      padding: 15mm 0 0 0;
+    }
+
     .cover__goldline {
-      grid-column: 3;
-      grid-row: 1 / span 2;
+      /* grid-column: 3;
+      grid-row: 1 / span 2; */
       background: var(--gold-line);
       width: 1.5mm;
-      justify-self: center;
-      height: 100%;
+      /* justify-self: center; */
+      /* height: 100%; */
+      position: absolute;
+      right: -30px;
+      top: 0;
+      height: calc(100% - 7mm);
     }
 
     .cover__photos-grid {
-      grid-column: 2;
-      grid-row: 1;
-      display: grid;
-      grid-template-columns: 56mm 38mm;
-      /* Left secondary photo block, Right main photo */
-      gap: 6mm;
-      /* padding-top: 10mm; */
-      padding-bottom: 4mm;
+      width: 46mm;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      margin-inline: 6mm;
+      padding-bottom: 16mm;
+      z-index: 2;
     }
 
     .cover__photos-left-col {
@@ -190,7 +205,7 @@
           #1B7F87 45%,
           #2D8F89 70%,
           #4DA08F 100%);
-      height: 85mm;
+      height: 100mm;
       width: 100%;
     }
 
@@ -210,7 +225,8 @@
     }
 
     .cover__photo-main-container {
-      width: 100%;
+      width: 38mm;
+      flex-shrink: 0;
       height: 100%;
       overflow: hidden;
       display: flex;
@@ -225,9 +241,22 @@
       filter: grayscale(1);
     }
 
+    .cover__main-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 16mm;
+      z-index: 2;
+    }
+
+    .cover__main-top {
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+    }
+
     .cover__content {
-      grid-column: 1;
-      grid-row: 1;
+      flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -264,9 +293,9 @@
     }
 
     .cover__bottom-bar {
-      grid-column: 1 / span 2;
-      grid-row: 2;
-
+      width: 100%;
+      height: 26mm;
+      flex-shrink: 0;
       background: linear-gradient(90deg,
           #3C8B7D 0%,
           #005E81 100%);
@@ -621,20 +650,19 @@
     <div class="cover">
       <!-- Left sidebar (Column 4 in RTL) -->
       <div class="cover__sidebar">
-        <div class="cover__logo-container">
-          <img src="images/company-logo.png" alt="Company Logo" class="cover__logo">
+        <div class="sidebar_top_part">
+          <!-- Gold Vertical line (Column 3 in RTL) -->
+          <div class="cover__goldline" aria-hidden="true"></div>
+          <div class="cover__logo-container">
+            <img src="images/company-logo.png" alt="Company Logo" class="cover__logo">
+          </div>
         </div>
         <div class="cover__sidebar-teal-block"></div>
       </div>
 
-      <!-- Gold Vertical line (Column 3 in RTL) -->
-      <div class="cover__goldline" aria-hidden="true"></div>
 
-      <!-- Photos (Column 2 in RTL) -->
+      <!-- Photos (Left part only) -->
       <div class="cover__photos-grid" aria-hidden="true">
-        <div class="cover__photo-main-container">
-          <img src="images/cover-main.png" alt="" class="cover__photo-main">
-        </div>
         <div class="cover__photos-left-col">
           <div class="cover__photos-teal-block"></div>
           <div class="cover__photo-small-container">
@@ -643,20 +671,29 @@
         </div>
       </div>
 
-      <!-- Content (Column 1 in RTL) -->
-      <div class="cover__content">
-        <h1 class="cover__title"> العــــــــــرض
-          <br> اﻟﻔﻨـــي
-        </h1>
-        <div class="cover__meta">
-          <p><strong>المنافسة /</strong> صيانة ونظافة وتشغيل المباني اإلدارية
-            شمال منطقة الرياض</p>
-          <p><strong>الجهه /</strong> وزارة الشؤون اإلسالمية والدعوة واإلرشاد</p>
-        </div>
-      </div>
+      <div class="cover__main-section">
+        <div class="cover__main-top">
+          <!-- Content (Right) -->
+          <div class="cover__content">
+            <h1 class="cover__title"> العــــــــــرض
+              <br> اﻟﻔﻨـــي
+            </h1>
+            <div class="cover__meta">
+              <p><strong>المنافسة /</strong> صيانة ونظافة وتشغيل المباني اإلدارية
+                شمال منطقة الرياض</p>
+              <p><strong>الجهه /</strong> وزارة الشؤون اإلسالمية والدعوة واإلرشاد</p>
+            </div>
+          </div>
 
-      <!-- Bottom horizontal bar (spans columns 1 to 2 in RTL) -->
-      <div class="cover__bottom-bar" aria-hidden="true"></div>
+          <!-- Main Photo (Left) -->
+          <div class="cover__photo-main-container">
+            <img src="images/cover-main.png" alt="" class="cover__photo-main">
+          </div>
+        </div>
+
+        <!-- Bottom horizontal bar -->
+        <div class="cover__bottom-bar" aria-hidden="true"></div>
+      </div>
       <!-- Footnote in margin -->
       <div class="page__footnote">
         <span><strong>ملاحظة/</strong> العرض ساري لمدة 90 يوم يوم من التاريخ المحدد لتسليم العروض —
