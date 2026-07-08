@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>{{company_name}} — العرض الفني</title>
+  <title>نسخة من العرض الفني - (2) شركة عبدالله خلف للمقاولات</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
@@ -29,10 +29,10 @@
       --teal: #1f7a72;
       --teal-light: #4fa89b;
       --gold: #c9a876;
-      --gold-line: #d4b483;
+      --gold-line: #c0996E;
       --paper: #eef3f4;
       --paper-2: #e4ebec;
-      --ink: #223034;
+      --ink: #3A3C39;
       --ink-soft: #4a5a5e;
       --white: #ffffff;
 
@@ -77,16 +77,17 @@
     }
 
     .page__footnote {
-      position: absolute;
+      /* position: absolute;
       left: 10mm;
       bottom: 6mm;
       display: flex;
+      color: var(--ink-soft);
       gap: 1.5mm;
+      z-index: 5; */
+      padding: 56px;
       align-items: baseline;
       font-size: 3mm;
-      color: var(--ink-soft);
       direction: rtl;
-      z-index: 5;
     }
 
     .page__footnote strong {
@@ -94,14 +95,26 @@
       font-weight: 700;
     }
 
+    /* Cover footnote: below the bottom bar */
+    .cover .page__footnote {
+      grid-column: 1 / -1;
+      grid-row: 3;
+      padding: 8mm 20mm;
+      text-align: end;
+    }
+
+    .cover .page__footnote strong {
+      color: var(--teal);
+    }
+
     /* =========================================================
      PAGE 1 — COVER
      ========================================================= */
     .cover {
       display: grid;
-      grid-template-columns: 1fr 100mm 6mm 42mm;
+      grid-template-columns: 1fr 100mm 6mm 50mm;
       /* RTL: Content, Photos, Goldline, Sidebar */
-      grid-template-rows: 1fr 22mm;
+      grid-template-rows: 1fr 26mm auto;
       height: 100%;
     }
 
@@ -113,19 +126,18 @@
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
-      padding: 10mm 0 0 0;
+      padding: 15mm 0 0 0;
       position: relative;
     }
 
     .cover__logo-container {
-      background: var(--white);
-      border: 0.26mm solid #d0dcdc;
-      padding: 3mm;
+      /* background: var(--white);
+      border: 0.26mm solid #d0dcdc; */
       width: 36mm;
       height: 22mm;
-      display: flex;
+      /* display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: center; */
     }
 
     .cover__logo {
@@ -135,16 +147,19 @@
     }
 
     .cover__sidebar-teal-block {
-      background: var(--navy-mid);
+      background: linear-gradient(90deg,
+          #005E81 0%,
+          #1E747F 50%,
+          #3C8B7D 100%);
       width: 100%;
-      height: 22mm;
+      height: 26mm;
     }
 
     .cover__goldline {
       grid-column: 3;
       grid-row: 1 / span 2;
       background: var(--gold-line);
-      width: 0.5mm;
+      width: 1.5mm;
       justify-self: center;
       height: 100%;
     }
@@ -153,10 +168,10 @@
       grid-column: 2;
       grid-row: 1;
       display: grid;
-      grid-template-columns: 38mm 56mm;
+      grid-template-columns: 56mm 38mm;
       /* Left secondary photo block, Right main photo */
       gap: 6mm;
-      padding-top: 10mm;
+      /* padding-top: 10mm; */
       padding-bottom: 4mm;
     }
 
@@ -168,14 +183,18 @@
     }
 
     .cover__photos-teal-block {
-      background: var(--navy-mid);
-      height: 75mm;
+      /* background: var(--navy-mid); */
+      background: linear-gradient(to bottom,
+          #045F81 0%,
+          #0B6E84 20%,
+          #1B7F87 45%,
+          #2D8F89 70%,
+          #4DA08F 100%);
+      height: 85mm;
       width: 100%;
     }
 
     .cover__photo-small-container {
-      background: var(--white);
-      border: 1.6mm solid var(--paper-2);
       flex: 1;
       display: flex;
       align-items: center;
@@ -219,7 +238,7 @@
     .cover__title {
       font-family: var(--font-display);
       font-weight: 900;
-      font-size: 17mm;
+      font-size: 30mm;
       line-height: 1.15;
       color: var(--ink);
     }
@@ -228,10 +247,10 @@
       display: flex;
       flex-direction: column;
       gap: 2.5mm;
-      font-size: 4mm;
+      font-size: 5mm;
       color: var(--ink);
-      border-right: 0.5mm solid var(--gold-line);
-      padding-right: 3.7mm;
+      border-right: 1mm solid var(--gold-line);
+      padding: 1mm 3.7mm 1mm 0;
       max-width: 120mm;
       text-align: right;
     }
@@ -247,7 +266,10 @@
     .cover__bottom-bar {
       grid-column: 1 / span 2;
       grid-row: 2;
-      background: var(--navy-mid);
+
+      background: linear-gradient(90deg,
+          #3C8B7D 0%,
+          #005E81 100%);
     }
 
     /* =========================================================
@@ -321,14 +343,14 @@
     }
 
     .divider__logo-container {
-      background: var(--white);
+      /* background: var(--white);
       border: 0.26mm solid #d0dcdc;
       padding: 3mm;
-      width: 36mm;
-      height: 22mm;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: center; */
+      width: 36mm;
+      height: 22mm;
     }
 
     .divider__logo {
@@ -610,34 +632,36 @@
 
       <!-- Photos (Column 2 in RTL) -->
       <div class="cover__photos-grid" aria-hidden="true">
+        <div class="cover__photo-main-container">
+          <img src="images/cover-main.png" alt="" class="cover__photo-main">
+        </div>
         <div class="cover__photos-left-col">
           <div class="cover__photos-teal-block"></div>
           <div class="cover__photo-small-container">
-            <img src="images/cover-small.png" alt="" class="cover__photo-small">
+            <img src="images/cover-small.jpg" alt="" class="cover__photo-small">
           </div>
-        </div>
-        <div class="cover__photo-main-container">
-          <img src="images/cover-main.png" alt="" class="cover__photo-main">
         </div>
       </div>
 
       <!-- Content (Column 1 in RTL) -->
       <div class="cover__content">
-        <h1 class="cover__title">العرض<br>الفني</h1>
+        <h1 class="cover__title"> العــــــــــرض
+          <br> اﻟﻔﻨـــي
+        </h1>
         <div class="cover__meta">
-          <p><strong>المنافسة /</strong> {{tender_title}}</p>
-          <p><strong>الجهه /</strong> {{client_entity}}</p>
+          <p><strong>المنافسة /</strong> صيانة ونظافة وتشغيل المباني اإلدارية
+            شمال منطقة الرياض</p>
+          <p><strong>الجهه /</strong> وزارة الشؤون اإلسالمية والدعوة واإلرشاد</p>
         </div>
       </div>
 
       <!-- Bottom horizontal bar (spans columns 1 to 2 in RTL) -->
       <div class="cover__bottom-bar" aria-hidden="true"></div>
-    </div>
-
-    <!-- Footnote in margin -->
-    <div class="page__footnote">
-      <span><strong>ملاحظة/</strong> العرض ساري لمدة {{offer_validity_days}} يوم من التاريخ المحدد لتسليم العروض —
-        {{submission_deadline}}</span>
+      <!-- Footnote in margin -->
+      <div class="page__footnote">
+        <span><strong>ملاحظة/</strong> العرض ساري لمدة 90 يوم يوم من التاريخ المحدد لتسليم العروض —
+          2026 /06 / 16</span>
+      </div>
     </div>
   </section>
 
