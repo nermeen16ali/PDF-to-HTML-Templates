@@ -40,7 +40,7 @@
       --font-body: 'DIN Next LT Arabic', 'Cairo', sans-serif;
 
       --page-w: 297mm;
-      --page-h: 210mm;
+      --page-h: 190mm;
     }
 
     * {
@@ -123,9 +123,9 @@
     .page__footnote span::before {
       position: absolute;
       content: " ";
-      top: -1mm;
-      width: 14mm;
-      height: 1mm;
+      top: -2mm;
+      width: 16.5mm;
+      height: 0.8mm;
       background: var(--gold-line);
       right: 0;
     }
@@ -151,7 +151,7 @@
     .cover__sidebar {
       width: 50mm;
       flex-shrink: 0;
-      padding-bottom: 16mm;
+      padding-bottom: 18mm;
       background: transparent;
       z-index: 3;
       display: flex;
@@ -206,8 +206,8 @@
       flex-shrink: 0;
       display: flex;
       flex-direction: column;
-      margin-inline: 6mm;
-      padding-bottom: 16mm;
+      margin-inline: 4mm;
+      padding-bottom: 18mm;
       z-index: 2;
     }
 
@@ -246,7 +246,7 @@
     }
 
     .cover__photo-main-container {
-      width: 50mm;
+      width: 56mm;
       flex-shrink: 0;
       height: 100%;
       overflow: hidden;
@@ -259,7 +259,8 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: 80% top;
+      object-position: 100% top;
+      transform: scaleX(-1);
       filter: grayscale(1);
     }
 
@@ -267,7 +268,7 @@
       flex: 1;
       display: flex;
       flex-direction: column;
-      padding-bottom: 16mm;
+      padding-bottom: 18mm;
       z-index: 2;
     }
 
@@ -282,7 +283,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 0 10mm 0 16mm;
+      padding: 0 10mm 0 5mm;
       gap: 12mm;
     }
 
