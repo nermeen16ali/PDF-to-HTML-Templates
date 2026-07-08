@@ -134,8 +134,10 @@
      PAGE 1 — COVER
      ========================================================= */
     .page--cover {
-      background: linear-gradient(to right, #cbd4d6, #eef3f4), url('images/cover-bg.jpg');
+      /* background: linear-gradient(to right, #cbd4d6, #eef3f4), url('images/cover-bg.jpg'); */
+      background: linear-gradient(to right, #BED5D8, #EFF2F3), url(images/cover-bg.jpg);
       background-blend-mode: multiply;
+      /* background-blend-mode: lighten; */
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -291,7 +293,7 @@
       font-family: var(--font-display);
       font-weight: 900;
       font-size: 30mm;
-      line-height: 1.15;
+      line-height: 31mm;
       color: var(--ink);
     }
 
@@ -303,7 +305,7 @@
       color: var(--ink);
       border-right: 1mm solid var(--gold-line);
       padding: 1mm 3.7mm 1mm 0;
-      max-width: 120mm;
+      max-width: 108mm;
       text-align: right;
     }
 
@@ -313,6 +315,8 @@
 
     .cover__meta strong {
       font-weight: 700;
+      color: #060707;
+      opacity: 0.9;
     }
 
     .cover__bottom-bar {
