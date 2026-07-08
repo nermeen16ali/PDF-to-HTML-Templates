@@ -116,6 +116,14 @@
     /* =========================================================
      PAGE 1 — COVER
      ========================================================= */
+    .page--cover {
+      background: linear-gradient(to right, #cbd4d6, #eef3f4), url('images/cover-bg.jpg');
+      background-blend-mode: multiply;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
     .cover {
       display: flex;
       flex-direction: row-reverse;
@@ -127,7 +135,7 @@
       width: 50mm;
       flex-shrink: 0;
       padding-bottom: 16mm;
-      background: var(--paper-2);
+      background: transparent;
       z-index: 3;
       display: flex;
       flex-direction: column;
@@ -137,13 +145,9 @@
     }
 
     .cover__logo-container {
-      /* background: var(--white);
-      border: 0.26mm solid #d0dcdc; */
-      width: 36mm;
+      width: 38mm;
       height: 22mm;
-      /* display: flex;
-      align-items: center;
-      justify-content: center; */
+      display: flex;
     }
 
     .cover__logo {
