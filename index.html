@@ -26,7 +26,7 @@
     :root {
       --navy-dark: #1c3f4d;
       --navy-mid: #17495a;
-      --teal: #1f7a72;
+      --teal: #1D7A6A;
       --teal-light: #4fa89b;
       --gold: #c9a876;
       --gold-line: #c0996E;
@@ -104,13 +104,30 @@
       height: 16mm;
       padding: 0 20mm;
       display: flex;
+      font-size: 3.6mm;
       align-items: center;
+      color: #060707;
+      font-weight: 500;
       justify-content: flex-end;
       z-index: 5;
     }
 
     .cover .page__footnote strong {
       color: var(--teal);
+    }
+
+    .page__footnote span {
+      position: relative;
+    }
+
+    .page__footnote span::before {
+      position: absolute;
+      content: " ";
+      top: -1mm;
+      width: 14mm;
+      height: 1mm;
+      background: var(--gold-line);
+      right: 0;
     }
 
     /* =========================================================
@@ -229,7 +246,7 @@
     }
 
     .cover__photo-main-container {
-      width: 38mm;
+      width: 50mm;
       flex-shrink: 0;
       height: 100%;
       overflow: hidden;
@@ -242,6 +259,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: 80% top;
       filter: grayscale(1);
     }
 
