@@ -5,10 +5,10 @@
   <meta charset="UTF-8">
   <title>نسخة من العرض الفني - (2) شركة عبدالله خلف للمقاولات</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
     href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Cairo:wght@400;600;700;900&display=swap"
-    rel="stylesheet">
+    rel="stylesheet"> -->
   <style>
     /* =========================================================
      FONTS
@@ -41,6 +41,7 @@
 
       --page-w: 297mm;
       --page-h: 190mm;
+      /* --page-h: 210mm; */
     }
 
     * {
@@ -331,6 +332,11 @@
     /* =========================================================
      PRINT SETUP
      ========================================================= */
+    @page {
+      size: A4 landscape;
+      margin: 0;
+    }
+
     @media print {
 
       html,
@@ -341,18 +347,17 @@
       .page {
         margin: 0;
         box-shadow: none;
-        width: 297mm;
-        height: 210mm;
-      }
-
-      @page {
-        size: A4 landscape;
-        margin: 0;
+        /* width: 297mm; */
+        /* height: 210mm; */
+        /* height: 190mm; */
+        width: var(--page-w);
+        height: var(--page-h);
       }
     }
 
     @media screen and (max-width: 1300px) {
       .page {
+        margin: 4mm auto;
         transform: scale(0.8);
         transform-origin: top center;
       }
