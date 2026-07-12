@@ -28,8 +28,7 @@
     --font-body: 'DIN Next LT Arabic', 'Cairo', sans-serif;
 
     --page-w: 297mm;
-    --page-h: 190mm;
-    /* --page-h: 210mm; */
+    --page-h: 210mm;
 }
 
 * {
@@ -50,8 +49,8 @@ body {
      ========================================================= */
 .page {
     position: relative;
-    width: var(--page-w);
-    height: var(--page-h);
+    width: var(--page-w);   /* 297mm — A4 landscape width  */
+    height: var(--page-h);  /* 210mm — A4 landscape height */
     margin: 10mm auto;
     background: var(--paper);
     overflow: hidden;
@@ -321,7 +320,8 @@ body {
      PRINT SETUP
      ========================================================= */
 @page {
-    size: A3 landscape;
+    /* Default hint — user can switch to A3 landscape in the print dialog */
+    size: A4 landscape;
     margin: 0;
 }
 
@@ -356,8 +356,8 @@ body {
     .page {
         margin: 0;
         box-shadow: none;
-        width: 297mm;
-        height: 190mm;
+        width: 297mm;   /* A4 landscape — scales up cleanly to A3 */
+        height: 210mm;
         overflow: hidden;
         position: relative;
         page-break-inside: avoid;
