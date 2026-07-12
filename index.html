@@ -329,7 +329,7 @@
      PRINT SETUP
      ========================================================= */
     @page {
-      size: A4 landscape;
+      size: landscape;
       margin: 0;
     }
 
@@ -338,16 +338,38 @@
       html,
       body {
         background: none;
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
       }
 
       .page {
         margin: 0;
         box-shadow: none;
-        /* width: 297mm; */
-        /* height: 210mm; */
-        /* height: 190mm; */
-        width: var(--page-w);
-        height: var(--page-h);
+        width: 297mm;
+        height: 190mm;
+        position: relative;
+        page-break-inside: avoid;
+        page-break-after: always;
+        break-after: page;
+        transform-origin: top right;
+      }
+
+      /* A4 landscape print: width is around 297mm */
+      @media (max-width: 350mm) {
+        .page {
+          transform: none;
+        }
+      }
+
+      /* A3 landscape print: width is around 420mm */
+      @media (min-width: 350mm) {
+        .page {
+          transform: scale(1.41414);
+          /* Scales A4 (297mm) up to A3 (420mm) */
+        }
       }
     }
 
