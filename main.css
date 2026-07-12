@@ -365,10 +365,74 @@ body {
     }
 }
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1300px) and (min-width: 1125px) {
     .page {
-        margin: 4mm auto;
-        transform: scale(0.8);
+        margin: 10mm auto;
+        transform: scale(0.85);
         transform-origin: top center;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE SCREEN SCALING — pure CSS zoom
+   Design width = 297mm = 1122.5px at 96dpi
+   zoom = viewport_width / 1122.5
+   ========================================================= */
+
+/* Small laptops / large tablets landscape */
+@media screen and (max-width: 1124px) and (min-width: 1025px) {
+    body { zoom: 0.912; } /* 1024 / 1122.5 */
+}
+
+/* iPad Pro landscape / large tablet */
+@media screen and (max-width: 1024px) and (min-width: 913px) {
+    body { zoom: 0.820; } /* 920 / 1122.5 */
+}
+
+/* iPad landscape / medium tablet */
+@media screen and (max-width: 912px) and (min-width: 821px) {
+    body { zoom: 0.730; } /* 820 / 1122.5 */
+}
+
+/* Tablet portrait */
+@media screen and (max-width: 820px) and (min-width: 769px) {
+    body { zoom: 0.684; } /* 768 / 1122.5 */
+}
+
+/* Large phone landscape / small tablet */
+@media screen and (max-width: 768px) and (min-width: 641px) {
+    body { zoom: 0.570; } /* 640 / 1122.5 */
+}
+
+/* Phone landscape */
+@media screen and (max-width: 640px) and (min-width: 481px) {
+    body { zoom: 0.427; } /* 480 / 1122.5 */
+}
+
+/* Phone portrait — large */
+@media screen and (max-width: 480px) and (min-width: 415px) {
+    body { zoom: 0.369; } /* 414 / 1122.5 */
+}
+
+/* Phone portrait — medium */
+@media screen and (max-width: 414px) and (min-width: 391px) {
+    body { zoom: 0.347; } /* 390 / 1122.5 */
+}
+
+/* Phone portrait — small (iPhone SE, Galaxy A) */
+@media screen and (max-width: 390px) and (min-width: 361px) {
+    body { zoom: 0.321; } /* 360 / 1122.5 */
+}
+
+/* Very small phones */
+@media screen and (max-width: 360px) {
+    body { zoom: 0.285; } /* 320 / 1122.5 */
+}
+
+/* Remove per-page margin when zoomed — pages stack with gap */
+@media screen and (max-width: 1124px) {
+    .page {
+        margin: 0 auto 8px auto;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
     }
 }
