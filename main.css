@@ -1,0 +1,374 @@
+/* =========================================================
+     FONTS
+     ========================================================= */
+@font-face {
+    font-family: 'DIN Next LT Arabic';
+    src: url('DINNextLTArabic-Regular-3.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* =========================================================
+     DESIGN TOKENS
+     ========================================================= */
+:root {
+    --navy-dark: #1c3f4d;
+    --navy-mid: #17495a;
+    --teal: #1D7A6A;
+    --teal-light: #4fa89b;
+    --gold: #c9a876;
+    --gold-line: #c0996E;
+    --paper: #eef3f4;
+    --paper-2: #BBD2D8;
+    --ink: #3A3C39;
+    --ink-soft: #4a5a5e;
+    --white: #ffffff;
+
+    --font-display: 'DIN Next LT Arabic', 'Tajawal', sans-serif;
+    --font-body: 'DIN Next LT Arabic', 'Cairo', sans-serif;
+
+    --page-w: 297mm;
+    --page-h: 190mm;
+    /* --page-h: 210mm; */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    background: #7a8b8f;
+    font-family: var(--font-body);
+    color: var(--ink);
+}
+
+/* =========================================================
+     PAGE SHELL
+     ========================================================= */
+.page {
+    position: relative;
+    width: var(--page-w);
+    height: var(--page-h);
+    margin: 10mm auto;
+    background: var(--paper);
+    overflow: hidden;
+    box-shadow: 0 1mm 6mm rgba(0, 0, 0, 0.25);
+    break-after: page;
+    page-break-after: always;
+}
+
+.page:last-child {
+    break-after: auto;
+    page-break-after: auto;
+}
+
+.page__footnote {
+    /* position: absolute;
+      left: 10mm;
+      bottom: 6mm;
+      display: flex;
+      color: var(--ink-soft);
+      gap: 1.5mm;
+      z-index: 5; */
+    padding: 56px;
+    align-items: baseline;
+    font-size: 3mm;
+    direction: rtl;
+}
+
+.page__footnote strong {
+    color: var(--teal);
+    font-weight: 700;
+}
+
+/* Cover footnote: below the bottom bar */
+.cover .page__footnote {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 16mm;
+    padding: 0 20mm;
+    display: flex;
+    font-size: 3.6mm;
+    align-items: center;
+    color: #060707;
+    font-weight: 500;
+    justify-content: flex-end;
+    z-index: 5;
+}
+
+.cover .page__footnote strong {
+    color: var(--teal);
+}
+
+.page__footnote span {
+    position: relative;
+}
+
+.page__footnote span::before {
+    position: absolute;
+    content: " ";
+    top: -2mm;
+    width: 16.5mm;
+    height: 0.8mm;
+    background: var(--gold-line);
+    right: 0;
+}
+
+/* =========================================================
+     PAGE 1 — COVER
+     ========================================================= */
+.page--cover {
+    /* background: linear-gradient(to right, #cbd4d6, #eef3f4), url('images/cover-bg.jpg'); */
+    background: linear-gradient(to right, #BED5D8, #EFF2F3), url(images/cover-bg.jpg);
+    background-blend-mode: multiply;
+    /* background-blend-mode: lighten; */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.cover {
+    display: flex;
+    flex-direction: row-reverse;
+    position: relative;
+    height: 100%;
+}
+
+.cover__sidebar {
+    width: 50mm;
+    flex-shrink: 0;
+    padding-bottom: 18mm;
+    background: transparent;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.cover__logo-container {
+    width: 38mm;
+    height: 22mm;
+    display: flex;
+}
+
+.cover__logo {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.cover__sidebar-teal-block {
+    background: linear-gradient(90deg,
+            #005E81 0%,
+            #1E747F 50%,
+            #3C8B7D 100%);
+    width: 100%;
+    height: 26mm;
+}
+
+.sidebar_top_part {
+    position: relative;
+    height: 100%;
+    padding: 15mm 0 0 0;
+}
+
+.cover__goldline {
+    /* grid-column: 3;
+      grid-row: 1 / span 2; */
+    background: var(--gold-line);
+    width: 1.5mm;
+    /* justify-self: center; */
+    /* height: 100%; */
+    position: absolute;
+    right: -30px;
+    top: 0;
+    height: calc(100% - 7mm);
+}
+
+.cover__photos-grid {
+    width: 44mm;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    margin-inline: 4mm;
+    padding-bottom: 18mm;
+    z-index: 2;
+}
+
+.cover__photos-left-col {
+    display: flex;
+    flex-direction: column;
+    gap: 6mm;
+    height: 100%;
+}
+
+.cover__photos-teal-block {
+    /* background: var(--navy-mid); */
+    background: linear-gradient(to bottom,
+            #045F81 0%,
+            #0B6E84 20%,
+            #1B7F87 45%,
+            #2D8F89 70%,
+            #4DA08F 100%);
+    height: 100mm;
+    width: 100%;
+}
+
+.cover__photo-small-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.cover__photo-small {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(1);
+}
+
+.cover__photo-main-container {
+    width: 56mm;
+    flex-shrink: 0;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cover__photo-main {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 100% top;
+    transform: scaleX(-1);
+    filter: grayscale(1);
+}
+
+.cover__main-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 18mm;
+    z-index: 2;
+}
+
+.cover__main-top {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+}
+
+.cover__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 10mm 0 5mm;
+    gap: 12mm;
+}
+
+.cover__title {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 30mm;
+    line-height: 31mm;
+    color: var(--ink);
+}
+
+.cover__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5mm;
+    font-size: 5mm;
+    color: var(--ink);
+    border-right: 1mm solid var(--gold-line);
+    padding: 1mm 3.7mm 1mm 0;
+    max-width: 108mm;
+    text-align: right;
+}
+
+.cover__meta p {
+    line-height: 1.5;
+}
+
+.cover__meta strong {
+    font-weight: 700;
+    color: #060707;
+    opacity: 0.9;
+}
+
+.cover__bottom-bar {
+    width: 100%;
+    height: 26mm;
+    flex-shrink: 0;
+    background: linear-gradient(90deg,
+            #3C8B7D 0%,
+            #005E81 100%);
+}
+
+/* =========================================================
+     PRINT SETUP
+     ========================================================= */
+@page {
+    size: landscape;
+    margin: 0;
+}
+
+@media print {
+
+    html,
+    body {
+        background: none;
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .page {
+        margin: 0;
+        box-shadow: none;
+        width: 297mm;
+        height: 190mm;
+        position: relative;
+        page-break-inside: avoid;
+        page-break-after: always;
+        break-after: page;
+        transform-origin: top right;
+    }
+
+    /* A4 landscape print: width is around 297mm */
+    @media (max-width: 350mm) {
+        .page {
+            transform: none;
+        }
+    }
+
+    /* A3 landscape print: width is around 420mm */
+    @media (min-width: 350mm) {
+        .page {
+            transform: scale(1.41414);
+            /* Scales A4 (297mm) up to A3 (420mm) */
+        }
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .page {
+        margin: 4mm auto;
+        transform: scale(0.8);
+        transform-origin: top center;
+    }
+}
