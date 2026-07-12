@@ -321,20 +321,36 @@ body {
      PRINT SETUP
      ========================================================= */
 @page {
-    size: landscape;
+    size: A3 landscape;
     margin: 0;
 }
 
 @media print {
 
+    /* ---- Force backgrounds & images to print ---- */
+    *,
+    *::before,
+    *::after {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
+
     html,
     body {
-        background: none;
+        background: white;
         margin: 0;
         padding: 0;
-        width: 100vw;
-        height: 100vh;
-        overflow: hidden;
+        width: 100%;
+        height: auto;
+        overflow: visible;
+    }
+
+    /* Make sure images are never hidden */
+    img {
+        display: block !important;
+        visibility: visible !important;
+        max-width: 100% !important;
     }
 
     .page {
@@ -342,26 +358,17 @@ body {
         box-shadow: none;
         width: 297mm;
         height: 190mm;
+        overflow: hidden;
         position: relative;
         page-break-inside: avoid;
+        break-inside: avoid;
         page-break-after: always;
         break-after: page;
-        transform-origin: top right;
     }
 
-    /* A4 landscape print: width is around 297mm */
-    @media (max-width: 350mm) {
-        .page {
-            transform: none;
-        }
-    }
-
-    /* A3 landscape print: width is around 420mm */
-    @media (min-width: 350mm) {
-        .page {
-            transform: scale(1.41414);
-            /* Scales A4 (297mm) up to A3 (420mm) */
-        }
+    .page:last-child {
+        page-break-after: auto;
+        break-after: auto;
     }
 }
 
