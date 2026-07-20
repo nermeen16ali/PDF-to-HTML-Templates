@@ -262,7 +262,7 @@ body {
 }
 
 .cover__photo-main-container {
-    width: 62mm;
+    width: 56mm;
     flex-shrink: 0;
     height: 100%;
     overflow: hidden;
