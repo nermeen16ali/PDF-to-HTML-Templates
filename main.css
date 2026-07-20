@@ -717,7 +717,7 @@ body {
 .p5__section {
     display: flex;
     flex-direction: column;
-    gap: 3mm;
+    gap: 2mm;
 }
 
 .p5__title-wrapper {
