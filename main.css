@@ -164,6 +164,7 @@ body {
     width: 38mm;
     height: 22mm;
     display: flex;
+    margin-inline: auto;
 }
 
 .cover__logo {
@@ -184,6 +185,7 @@ body {
 .sidebar_top_part {
     position: relative;
     height: 100%;
+    width: 100%;
     padding: 15mm 0 0 0;
 }
 
@@ -195,7 +197,7 @@ body {
     /* justify-self: center; */
     /* height: 100%; */
     position: absolute;
-    right: -30px;
+    right: 0;
     top: 0;
     height: calc(100% - 7mm);
 }
@@ -213,6 +215,10 @@ body {
 .page--profile .cover__photos-grid {
     width: 95mm;
     padding-bottom: 0;
+}
+
+.page--profile .cover__sidebar {
+    width: 35mm;
 }
 
 .cover__photos-left-col {
