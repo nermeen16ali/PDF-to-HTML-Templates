@@ -297,10 +297,16 @@ body {
     gap: 12mm;
 }
 
+.cover__content .cover__logo-container {
+    position: absolute;
+    top: 12mm;
+    right: 8mm;
+}
+
 .cover__title {
     font-weight: 900;
-    font-size: 30mm;
-    line-height: 31mm;
+    font-size: 26mm;
+    line-height: 30mm;
     color: var(--ink);
 }
 
