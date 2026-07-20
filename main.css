@@ -684,7 +684,7 @@ body {
 /* Right Content */
 .p5__content {
     width: 50%;
-    padding: 10mm 8mm 10mm 8mm;
+    padding: 6mm 8mm 6mm 8mm;
     display: flex;
     flex-direction: column;
     gap: 1mm;
