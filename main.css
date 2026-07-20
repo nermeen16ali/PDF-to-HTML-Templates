@@ -72,6 +72,43 @@ body {
     page-break-after: auto;
 }
 
+/* =========================================================
+     DYNAMIC CONTENT PAGE VARIANT
+     Use class="page page--dynamic" on any section whose
+     content is injected at runtime and may be taller than
+     one physical page. The page will grow with its content
+     and the PDF renderer will split it across pages naturally.
+     ========================================================= */
+.page--dynamic {
+    height: auto;          /* grow with content */
+    min-height: var(--page-h); /* at least one page tall */
+    overflow: visible;     /* never clip content */
+}
+
+/* Fix inner containers that use height:100% — they would collapse
+   once their parent page switches to height:auto              */
+.page--dynamic .p5__container {
+    height: auto;
+    min-height: calc(var(--page-h) - 0px); /* fill at minimum one page */
+    flex: unset;
+}
+
+/* Photo column: stretch to match the content column height */
+.page--dynamic .p5__photo-col {
+    align-self: stretch;
+    height: auto;
+}
+
+/* p7 container and table: let them grow with rows */
+.page--dynamic .p7__container {
+    height: auto;
+    min-height: calc(var(--page-h) - 20mm);
+}
+
+.page--dynamic .p7__table {
+    height: auto;
+}
+
 .page__footnote {
     /* position: absolute;
       left: 10mm;
@@ -1353,6 +1390,15 @@ body {
         break-inside: avoid;
         page-break-after: always;
         break-after: page;
+    }
+
+    /* Dynamic pages: grow with content, never clip */
+    .page.page--dynamic {
+        height: auto;
+        min-height: 210mm;
+        overflow: visible;
+        page-break-inside: auto;
+        break-inside: auto;
     }
 
     .page:last-child {
