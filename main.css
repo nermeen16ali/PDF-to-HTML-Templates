@@ -687,7 +687,7 @@ body {
     padding: 6mm 8mm 6mm 8mm;
     display: flex;
     flex-direction: column;
-    gap: 1mm;
+    gap: 3mm;
     justify-content: flex-start;
 }
 
