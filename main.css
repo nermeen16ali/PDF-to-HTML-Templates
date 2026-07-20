@@ -32,8 +32,8 @@
     --font-body: 'DIN Next LT Arabic', 'Cairo', sans-serif;
 
     --page-w: 297mm;
-    --page-h: 190mm;
-    /* --page-h: 210mm; */
+    /* --page-h: 190mm; */
+    --page-h: 210mm;
 }
 
 * {
@@ -745,7 +745,7 @@ body {
     font-size: 3.1mm;
     line-height: 1.6;
     color: var(--black);
-    padding-right: 10mm;
+    padding-right: 2mm;
 }
 
 .p5__list {
@@ -755,7 +755,7 @@ body {
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 2mm;
+    gap: 0;
 }
 
 .p5__list>li {
